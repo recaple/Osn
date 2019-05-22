@@ -2,7 +2,7 @@
 #include <fcntl.h>
 #include "libft.h"
 
-#define BUFF_SIZE 200
+#define BUFF_SIZE 4
 
 
 char *ft_relocate(char *c, long int *count)
@@ -41,8 +41,8 @@ int get_next_line(const int fd, char **line)
     {
 		while (ret[i] != '\0')
 		{
-           c[i] = ret[i];
-           i++;
+			c[i] = ret[i];
+			i++;
 		}
         ft_strdel(&ret);
 	}
@@ -75,23 +75,3 @@ int get_next_line(const int fd, char **line)
 	return (1);
 }
 
-int main()
-{
-	int fd;
-	int i;
-	if((fd=open("cx.c", O_RDONLY))==-1)
-	{
-		printf("Cannot open file.\n");
-		exit(1);
-	}
-	char *c;
-
-	get_next_line(fd, &c);
-    printf("%s", c);
-    get_next_line(fd, &c);
-    printf("%s", c);
-    get_next_line(fd, &c);
-    printf("%s", c);
-    //write(1, &c, 21);
-    return 0;
-}
